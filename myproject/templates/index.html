@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css')}}"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <center>
-      <h1>Hello, World!</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam provident
-        fuga cum ad temporibus maiores, minus nihil impedit quibusdam voluptatum
-        est necessitatibus molestiae natus a sint aliquam beatae magni fugit?
+{% include 'layouts/header.html' %}
+
+
+<main>
+  <!-- place content here -->
+  <!-- bs5-jumbotron-fluid -->
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Custom jumbotron</h1>
+      <p class="col-md-8 fs-4">
+        Using a series of utilities, you can create this jumbotron, just like
+        the one in previous versions of Bootstrap. Check out the examples below
+        for how you can remix and restyle it to your liking.
       </p>
-      <a href="/about">About us...</a>
-      <a href="/contact">Contact us...</a>
-    </center>
-  </body>
-</html>
+      <button class="btn btn-primary btn-lg" type="button">
+        Example button
+      </button>
+    </div>
+  </div>
+</main>
+
+
+{% include 'layouts/footer.html' %}
