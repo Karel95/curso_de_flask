@@ -12,7 +12,7 @@ app.config["MYSQL_PASSWORD"] = ""
 app.config["MYSQL_DB"] = "db_crud_flask"
 
 # # Extra configs, optional:
-# app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 # app.config["MYSQL_CUSTOM_OPTIONS"] = {"ssl": {"ca": "/path/to/ca-file"}}
 
 mysql = MySQL()
@@ -30,7 +30,6 @@ def clients():
     cur.execute("""SELECT * FROM clients""")
     clients = cur.fetchall()
     
-    print(clients)
     return render_template('modules/clients/index.html', title='clients', clients=clients)
 
 @app.route('/about')
