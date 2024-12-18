@@ -16,4 +16,6 @@ python -m virtualenv .venv
 
 pip install flask
 
+pip install flask-MySQLdb
+
 flask --app hello --debug run
