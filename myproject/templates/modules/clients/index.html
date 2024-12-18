@@ -22,16 +22,18 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
+      {% for client in clients %}
       <tr class="table-primary">
-        <td scope="row">Item</td>
-        <td>Item</td>
-        <td>Item</td>
-        <td>Item</td>
+        <td scope="row">{{ client[0] }}</td>
+        <td>{{ client[1] }}</td>
+        <td>{{ client[2] }}</td>
+        <td>{{ client[3] }}</td>
         <td>
           <a href="" class="btn btn-success">Edit</a>
           <a href="" class="btn btn-danger">Delete</a>
         </td>
       </tr>
+      {% endfor %}
     </tbody>
     <tfoot></tfoot>
   </table>
