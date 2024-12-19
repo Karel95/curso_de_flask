@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, request
 from flask_mysqldb import MySQL
 
 
@@ -31,6 +31,26 @@ def clients():
     clients = cur.fetchall()
     
     return render_template('modules/clients/index.html', title='clients', clients=clients)
+
+@app.route('/clients/create')
+def create_client():
+    return render_template('modules/clients/create.html', title='create_client')
+
+@app.route('/clients/store', methods=['POST'])
+def store_client():
+    if request.method == 'POST':
+        name = request.form['name']
+        phone = request.form['phone']
+        date = request.form['date']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO clients (name, phone, date) VALUES (%s, %s, %s)", (name, phone, date))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect('/clients')
+
+    return 'Method not allowed'
 
 @app.route('/about')
 def about():
