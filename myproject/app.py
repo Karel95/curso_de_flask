@@ -52,6 +52,23 @@ def store_client():
 
     return 'Method not allowed'
 
+@app.route('/clients/edit/<int:id>')
+def edit_client(id):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM clients WHERE id_client = %s", (id,))
+    client = cur.fetchone()
+    
+    return render_template('modules/clients/edit.html', title='edit_client', client=client)
+
+@app.route('/clients/delete/<int:id>')
+def delete_client(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM clients WHERE id_client = %s", (id,))
+    mysql.connection.commit()
+    cur.close()
+
+    return redirect('/clients')
+
 @app.route('/about')
 def about():
     # user data
