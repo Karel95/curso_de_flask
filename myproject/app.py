@@ -60,6 +60,22 @@ def edit_client(id):
     
     return render_template('modules/clients/edit.html', title='edit_client', client=client)
 
+@app.route('/clients/update/<int:id>', methods=['POST'])
+def update_client(id):
+    if request.method == 'POST':
+        name = request.form['name']
+        phone = request.form['phone']
+        date = request.form['date']
+
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE clients SET name = %s, phone = %s, date = %s WHERE id_client = %s", (name, phone, date, id))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect('/clients')
+
+    return 'Method not allowed'
+
 @app.route('/clients/delete/<int:id>')
 def delete_client(id):
     cur = mysql.connection.cursor()

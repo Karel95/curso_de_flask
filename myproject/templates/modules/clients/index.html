@@ -25,7 +25,7 @@
     <tbody class="table-group-divider">
       {% for client in clients %}
       <tr class="table-primary">
-        <td scope="row">{{ client['id_client'] }}</td>
+        <td scope="row">{{ loop.index }}</td> <!-- client['id_client'] -->
         <td>{{ client['name'] }}</td>
         <td>{{ client['phone'] }}</td>
         <td>{{ client['date'] }}</td>
